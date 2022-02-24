@@ -1,16 +1,22 @@
 # consumer.py
 #
 # consumer decorator and co-routine example
+from functools import wraps
+
 
 def consumer(func):
+    @wraps(func)
     def start(*args,**kwargs):
         c = func(*args,**kwargs)
         c.send(None)
+
         return c
     return start
+    
 
 # Example
 if __name__ == '__main__':
+
 
     @consumer
     def recv_count():
