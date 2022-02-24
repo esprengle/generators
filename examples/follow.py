@@ -6,13 +6,23 @@ import time
 import os
 
 def follow(thefile):
+    """
+    Streamer similar to `tail -f`
+   
+    Run this program as a background process and leave it running
+    in a separate window.  We'll write program that read the output
+    file being generated
+    """
     thefile.seek(0, os.SEEK_END)
+
     while True:
         line = thefile.readline()
         if not line:
             time.sleep(0.1)
             continue
+
         yield line
+
 
 # Example use
 # Note : This example requires the use of an apache log simulator.
