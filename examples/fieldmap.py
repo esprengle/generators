@@ -7,6 +7,7 @@ def field_map(dictseq, name, func):
         d[name] = func(d[name])
         yield d
 
+
 # Example
 
 if __name__ == '__main__':
